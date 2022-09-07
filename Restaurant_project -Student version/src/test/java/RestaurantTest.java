@@ -75,4 +75,17 @@ class RestaurantTest {
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    @Test
+    public void adding_item_to_cart_should_return_total_order_value_of_all_items_in_cart(){
+        restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Chicken Chilli",240);
+        restaurant.addToMenu("Egg Curry", 150);
+        int cartValue = restaurant.addToCart("Sweet corn soup");
+        cartValue = cartValue + restaurant.addToCart("Vegetable lasagne");
+        cartValue = cartValue + restaurant.addToCart("Chicken Chilli");
+        cartValue = cartValue + restaurant.addToCart("Egg Curry");
+        assertEquals(778,cartValue);
+    }
 }
