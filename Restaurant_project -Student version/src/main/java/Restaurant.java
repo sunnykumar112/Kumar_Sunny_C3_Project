@@ -69,4 +69,12 @@ public class Restaurant {
         return name;
     }
 
+    public int addToCart(String itemName){
+        int orderValue = 0;
+        for (Item selectedItem : menu){
+            if(selectedItem.getName().equals(itemName))
+                orderValue = orderValue+selectedItem.getPrice();
+        }
+        return orderValue;
+    }
 }
